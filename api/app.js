@@ -4,13 +4,10 @@ const mongoose = require('mongoose'); // for access the models
 const fs = require('fs');
 const fileUpload = require('express-fileupload');
 const app = express();
-const cwd = process.cwd();
 const env = process.env
-var cors = require('cors')
 
 mongoose.set('useCreateIndex', true); // mongoose default config settings
 mongoose.connect(env.MONGO_DB_URL, { useNewUrlParser: true }); // mention database name
-app.use(cors())
 app.use(fileUpload());	
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -22,8 +19,6 @@ app.use((req, res, next) => {
     next();
 });
 const listRoutes = require('./app/routes/lists')
-
-app.use(express.static(cwd + '/public'));
 app.use(async(req, res, next) => {
     const url = req.url;
     const uriArray = url.split('/');
@@ -44,43 +39,40 @@ app.use(async(req, res, next) => {
 
 /* Api Response Middleware */
 app.use((req, res, next) => {
-    res.apiResponse = (status, message, data = null) => {
-        var message = message;
-        res.send({
-            status,
-            message,
-            data
-        })
-        return res.end()
-    }
-    var contype = req.headers['content-type'];
-    if ((!contype || contype.indexOf('multipart/form-data') !== 0) && !req.body.params) {
-        return res.apiResponse(false, "Params is required")
-    }
-    var params = req.body.params
-    if ((typeof params).toLowerCase() !== 'object') {
-        try {
-            if (params != undefined) {
-                params = JSON.parse(params)
-            }
+    if (req.method.toLowerCase() == 'post') 
+    {
+        res.apiResponse = (status, message, data = null) => {
+            var message = message;
+            res.send({
+                status,
+                message,
+                data
+            })
+            return res.end()
+        }
+        var contype = req.headers['content-type'];
+        if ((!contype || contype.indexOf('multipart/form-data') !== 0) && !req.body.params) {
+            return res.apiResponse(false, "Params is required")
+        }
+        var params = req.body.params
+        if ((typeof params).toLowerCase() !== 'object') {
+            try {
+                if (params != undefined) {
+                    params = JSON.parse(params)
+                }
 
-        } catch (e) {
-            return res.apiResponse(false, "Params is not a valid JSON")
+            } catch (e) {
+                return res.apiResponse(false, "Params is not a valid JSON")
+            }
+            if ((typeof params).toLowerCase() !== 'object' && (typeof params).toLowerCase() !== 'undefined') {
+                return res.apiResponse(false, "Params is not a valid JSON")
+            }
         }
-        if ((typeof params).toLowerCase() !== 'object' && (typeof params).toLowerCase() !== 'undefined') {
-            return res.apiResponse(false, "Params is not a valid JSON")
-        }
+        req.bodyParams = params
     }
-    req.bodyParams = params
     next()
 })
 
 
 app.use('/api/list', listRoutes);
-
-/* Not Found Middleware */
-app.use((req, res, next) => {
-    return res.redirect('/admin');
-});
-
 module.exports = app;

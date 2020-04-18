@@ -4,13 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev:ssr": "ng run waioz-angular-v9:serve-ssr",
     "serve:ssr": "node dist/waioz-angular-v9/server/main.js",
-    "build:ssr": "ng build --prod && ng run waioz-angular-v9:server:production"
+    "watch-serve": "nodemon dist/waioz-angular-v9/server/main.js",
+    "build": "ng build --prod && ng run waioz-angular-v9:server:production",
+    "watch": "ng build --watch=true && ng run waioz-angular-v9:server"
   },
   "private": true,
   "dependencies": {

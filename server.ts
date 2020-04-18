@@ -8,10 +8,17 @@ import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 const domino = require('domino');
-
+const dotenv = require('dotenv');
+dotenv.config();
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
-  const server = express();
+  // Start up the Node server
+  if (!process.env.HTTP_HOST) {
+    console.log('Please configure env file.')
+    console.log('Copy .env.default to .env and configure the values.')
+    return
+  }
+  const server = require('./api/app');
   const distFolder = join(process.cwd(), 'dist/waioz-angular-v9/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
   const win = domino.createWindow(indexHtml);
@@ -38,18 +45,23 @@ export function app() {
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
 
-  return server;
-}
+  // const http = require('http');
+  const https = require('https');
+  const httpHost = process.env.HTTP_HOST || 'localhost';
+  const httpPort = process.env.HTTP_PORT || 5200;
 
-function run() {
-  const port = 9009;
-
-  // Start up the Node server
-  const server = app();
-  server.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
+  // const http_server = http.createServer(server);
+  const fs = require('fs');
+  const options = {
+    key: fs.readFileSync(process.env.HTTPS_KEY),
+    cert: fs.readFileSync(process.env.HTTPS_CERT)
+  };
+  const http_server = https.createServer(options,server);
+  http_server.listen(httpPort, httpHost, () => {
+    console.log(`Node Express server listening on http://${httpHost}:${httpPort}`);
   });
 }
+
 
 // Webpack will replace 'require' with '__webpack_require__'
 // '__non_webpack_require__' is a proxy to Node 'require'
@@ -58,7 +70,7 @@ declare const __non_webpack_require__: NodeRequire;
 const mainModule = __non_webpack_require__.main;
 const moduleFilename = mainModule && mainModule.filename || '';
 if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
-  run();
+  app();
 }
 
 export * from './src/main.server';
