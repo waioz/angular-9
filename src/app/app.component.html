@@ -1,0 +1,32 @@
+<div class="h-100 row m-0 p-0">
+  <div class="d-block d-xs-none w-100" *ngIf="isMobile">
+    <ng-sidebar-container>
+      <!-- A sidebar -->
+      <ng-sidebar [(opened)]="_opened" [(mode)]="_mode"  [(sidebarClass)]="_class">
+        <div class="sidebar-container">
+          <p class="float-right p-1"><button (click)="_toggleSidebar()" class="white no-border pointer no-outline">
+            <fa-icon class="mr-1" [icon]="faTimes"></fa-icon>
+          </button></p>
+          <app-sidemenu></app-sidemenu>
+        </div>
+      </ng-sidebar>
+
+      <!-- Page content -->
+      <div ng-sidebar-content>
+        <app-header></app-header>
+        <router-outlet></router-outlet>
+      </div>
+    </ng-sidebar-container>
+  </div>
+  <div *ngIf="!isMobile" class="d-none d-sm-block d-md-block d-lg-block d-xl-block container p-0">
+    <div class="row m-0 p-0 h-100">
+      <div class="col-md-5 col-lg-4 col-xl-3 border-right">
+        <app-sidemenu></app-sidemenu>
+      </div>
+      <div class="col-md-7 col-lg-8 col-xl-9">
+        <app-header></app-header>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

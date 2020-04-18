@@ -1,0 +1,40 @@
+<div class="row p-0 m-0">
+    <div class="col-md-12 p-0">
+        <p class="col-12">Movies</p>
+        <div class="row p-0 m-0">
+            <div class="col-6 col-md-6 col-sm-6 col-lg-4 col-xl-2 mb-4 movie_list" *ngFor="let item of list_data" (click)="edit(item)">
+                <div class="card pointer p-0">
+                    <img class="card-img-top movie_img" src="{{ item?.original_image }}" alt="Card image cap">
+                    <div class="card-body">
+                    <h5 class="card-title m-0">{{ item?.name }}</h5>
+                    <p class="card-text"><small class="text-muted">{{ item?.release_date }}</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 text-center" *ngIf="!list_data?.length">
+                <img src="../../assets/no_image.jpg" />
+                <p>No List Found</p>
+            </div>
+            <nav aria-label="Page navigation example" class="mt-5 col-12">
+                <ul *ngIf="pages && pages.length > 1" class="pagination justify-content-end f-wrap">
+                    <li class="page-item pointer" [ngClass]="{disabled:current === 1}">
+                        <a class="page-link" mdbWavesEffect (click)="getLists(1)"><fa-icon  [icon]="faAngleDoubleLeft"></fa-icon></a>
+                    </li>
+                    <li class="page-item pointer" [ngClass]="{disabled:current === 1}">
+                        <a class="page-link" mdbWavesEffect (click)="getLists(current - 1)"><fa-icon  [icon]="faAngleLeft"></fa-icon></a>
+                    </li>
+                    <li class="page-item pointer" *ngFor="let page of pages" [ngClass]="{active:current === page}">
+                        <a class="page-link" mdbWavesEffect (click)="getLists(page)">{{page}}</a>
+                    </li>
+                    <li class="page-item pointer" [ngClass]="{disabled:current === totalPages}">
+                        <a class="page-link" mdbWavesEffect (click)="getLists(current + 1)"><fa-icon  [icon]="faAngleRight"></fa-icon></a>
+                    </li>
+                    <li class="page-item pointer" [ngClass]="{disabled:current === totalPages}">
+                        <a class="page-link" mdbWavesEffect (click)="getLists(totalPages)"><fa-icon  [icon]="faAngleDoubleRight"></fa-icon></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,23 @@
+<div class="row p-0 m-0 sticky-top white">
+    <div class="d-block d-sm-none w-100">
+        <div class="col-12 text-center align-items-center d-flex">
+            <button (click)="toggleSidebar()" class="float-left white no-border pointer no-outline p-0"><fa-icon class="mr-1" [icon]="faBars"></fa-icon></button>
+            <p class="m-0 py-3 w-100">WAIOZ <span class="slogan">Angular v9</span></p>
+        </div>
+    </div>
+    <div class="col-8 col-md-9 py-3">
+        <div class="input-group d-flex align-items-center">
+            <input type="text" class="form-control" (keyup)="set_search($event)" placeholder="Search by movie name" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <div class="input-group-append">
+                <span class="input-group-text white" id="inputGroup-sizing-default">
+                    <fa-icon class="mr-1" *ngIf="page==''" [icon]="faMapMarkerAlt"></fa-icon>
+                    <fa-icon class="mr-1" *ngIf="page=='lists'" [icon]="faSearch"></fa-icon>
+                </span>
+              </div>
+        </div>
+    </div>
+    <div class="col-4 col-md-3 d-flex pl-0 align-items-center">
+        <p class="m-0" *ngIf="page==''">Try your business idea in MEAN Stack? <a href="https://waioz.com">Contact Us</a></p>
+        <button type="button" routerLink="lists/add"  class="btn btn-dark ml-auto">Add Movie</button>
+    </div>
+</div>

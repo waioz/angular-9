@@ -1,0 +1,48 @@
+<div class="row p-0 m-0">
+    <div class="col-12 my-4">
+        <fa-icon routerLink="/lists" class="pointer mr-3 float-left no-outline" [icon]="faArrowLeft"></fa-icon><h5>{{ _action }} Movie</h5>
+    </div>
+    <div class="col-12 input-group mb-3">
+        <div class="input-group-prepend">
+            <span id="movie_name_text" class="input-group-text">Movie Name</span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="formValues['name']" placeholder="Name of the movie" aria-label="Movie name" aria-describedby="movie_name_text">
+        <div class="d-none d-lg-block input-group-append">
+            <button class="btn btn-dark" (click)="compressFile()">Upload Movie Poster</button>
+        </div>
+    </div>
+    <div class="d-block d-lg-none col-12 mb-3 pb-1">
+        <button class="btn btn-dark w-100" (click)="compressFile()">Upload Movie Poster</button>
+    </div>
+    <div class="col-12 col-lg-4 col-xl-3" *ngIf="formValues['poster']">
+        <span class="input-group-text">Current Poster</span>
+        <img class="w-100 object-fit-cover h-200x"  [src]="formValues['original_image']" alt="">
+        <p></p>
+    </div>
+    <div class="col-6 col-lg-4 col-xl-3" *ngIf="imgResultBeforeCompress">
+        <span class="input-group-text">Uploaded</span>
+        <img class="w-100 object-fit-cover h-200x"  [src]="imgResultBeforeCompress" alt="">
+        <p>{{ imgSizeBeforeCompress }}</p>
+    </div>
+    <div class="col-6 col-lg-4 col-xl-3 " *ngIf="imgResultAfterCompress">
+        <span class="input-group-text">Compressed</span>
+        <img class="w-100 object-fit-cover h-200x"  [src]="imgResultAfterCompress" alt="">
+        <p>{{ imgSizeAfterCompress }}</p>
+    </div>
+    <div class="col-12 input-group mb-3">
+        <div class="input-group-prepend">
+          <span id="release_date_text" class="input-group-text">Released On</span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="formValues['release_date']" placeholder="Date of movie released" aria-label="Released On" aria-describedby="release_date_text">
+    </div>
+    <div class="col-12  mb-3">
+        <button type="button" (click)="formSubmit()" class="btn btn-primary" [disabled]="update_movie['disabled']">
+            <div *ngIf="update_movie['loading']" class="loader transition-all"></div>
+            <span class="transition-all" *ngIf="!update_movie['loading']">Submit</span>
+        </button>
+        <button type="button" (click)="deleteList()" *ngIf="_action=='Edit'" class="ml-2 btn btn-secondary" [disabled]="delete_movie['disabled']">
+            <div *ngIf="delete_movie['loading']" class="loader transition-all"></div>
+            <span class="transition-all" *ngIf="!delete_movie['loading']">Delete</span>
+        </button>
+    </div>
+</div>

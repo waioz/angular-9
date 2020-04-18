@@ -1,0 +1,124 @@
+<div class="row m-0 p-0">
+    <div class="col-xl-8">
+<h4 id="lighthouse-audit">Lighthouse Audit</h4>
+<p><img src="https://api.ganatan.org/articles/img/search-engine-optimization-avec-angular-lighthouse-after.png"/></p>
+<h4 id="table-of-contents">Table of contents</h4>
+<ul>
+<li><a href="#front-end">Front end</a></li>
+<li><a href="#back-end">Back end</a></li>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#step-by-step-quide">Step By Step Quide</a></li>
+</ul>
+<h4 id="front-end">Front end</h4>
+<pre class="sourceCode bash">
+<code class="sourceCode bash">
+<span class="co"># clone the repo</span>
+<span class="kw">git</span> clone https://github.com/ganatan/angular9-app.git
+
+<span class="co"># change directory</span>
+<span class="kw">cd</span> angular9-app
+
+<span class="co"># install the repo with npm</span>
+<span class="kw">npm</span> install
+
+<span class="co"># start the server</span>
+<span class="kw">npm</span> start</code>
+</pre>
+<p>in your browser go to <a href="http://localhost:4200">http://localhost:4200</a></p>
+<h3 id="tests">Tests</h3>
+<ul>
+<li><code>npm run lint</code></li>
+<li><code>npm run test</code></li>
+<li><code>npm run e2e</code></li>
+</ul>
+<h3 id="compilation">Compilation</h3>
+<ul>
+<li><code>npm run build</code> ( without SSR)</li>
+<li><code>npm run build:ssr</code> ( with SSR)</li>
+</ul>
+<h3 id="production">Production</h3>
+<ul>
+<li><code>npm run serve:ssr</code></li>
+<li>in your browser <a href="http://localhost:4000">http://localhost:4000</a></li>
+</ul>
+<h4 id="back-end">Back end</h4>
+<h3 id="path">Path</h3>
+<ul>
+<li><code>/api</code></li>
+</ul>
+<h3 id="database-creation">Database Creation</h3>
+<ul>
+<li><code>change login and password for mongodb in file app.js</code></li>
+<li><code>dbname&quot;:&quot;waioz-sample&quot;</code></li>
+</ul>
+<h3 id="developpement">Developpement</h3>
+<ul>
+<li><code>npm run start</code></li>
+<li>in your browser <a href="http://localhost:5200">http://localhost:5200</a></li>
+</ul>
+<h3 id="tests-api">Tests API</h3>
+<ul>
+<li>in your postman tool <a href="http://localhost:5200/movies">http://localhost:5200/movies</a></li>
+</ul>
+<h4 id="documentation">Documentation</h4>
+<h3 id="author">Author</h3>
+<ul>
+<li>Updated : 16/04/2020</li>
+<li>Author : A.K.Praveen Kumar</li>
+</ul>
+<h4 id="step-by-step-quide">Step By Step Quide</h4>
+<h3 id="install-the-angular-cli">Install the Angular CLI</h3>
+<ul>
+<li>To install the CLI using npm, open a terminal/console window and enter the following command:</li>
+</ul>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># Install the Angular CLI globally</span>
+<span class="kw">npm</span> install -g @angular/cli
+
+<span class="co"># provide your project name instead waioz-angular-v9, as shown here</span>
+<span class="kw">ng</span> new waioz-angular-v9</code></pre>
+<ul>
+<li>Set routing option yes.</li>
+<li>choose your styling platform extension</li>
+</ul>
+<h3 id="browser-support">Browser Support</h3>
+<ul>
+<li><p>install web-animation-js for browser support. Old browsers does not support some features of Angular. <a href="https://angular.io/guide/browser-support" target="_blank">Learn more</a></p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># install the optional web animations polyfill</span>
+<span class="kw">npm</span> install --save web-animations-js</code></pre></li>
+<li><p>You can then add the import statement in the src/polyfills.ts<br></p></li>
+</ul>
+<h3 id="server-side-rendering-ssr---angular-universal">Server Side Rendering (SSR) - Angular Universal</h3>
+<ul>
+<li><p>To create the server-side app module, app.server.module.ts, run the following CLI command. <a href="https://angular.io/guide/universal" target="_blank"> Learn more</a></p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">ng</span> add @nguniversal/express-engine</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">npm</span> run build:ssr <span class="kw">&amp;&amp;</span> <span class="kw">npm</span> run serve:ssr</code></pre></li>
+<li><p>Open a browser and navigate to http://localhost:4000/.<br></p></li>
+</ul>
+<h3 id="adding-a-service-worker-to-your-project---pwa">Adding a service worker to your project - PWA</h3>
+<ul>
+<li><p>To set up the Angular service worker in your project, use the CLI command ng add <span class="citation">@angular/pwa</span>. It takes care of configuring your app to use service workers by adding the service-worker package along with setting up the necessary support files. <a href="https://angular.io/guide/service-worker-getting-started" target="blank" >Learn more</a></p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#ng add @angular/pwa --project *project-name*</span>
+<span class="kw">ng</span> add @angular/pwa --project waioz-angular-v9</code></pre>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">npm</span> run build:ssr <span class="kw">&amp;&amp;</span> <span class="kw">npm</span> run serve:ssr</code></pre></li>
+<li>Open a browser and navigate to http://localhost:4000/.<br></li>
+<li><p>So PWA creates the application in mobile phones. First time you opens your site in browser it will asks you to save as PWA. If you click yes<br> it installed in your mobile and it reacts like normal applicaton. This is pretty much and yeah its good but if you release any updates in your website it will not reflect in already installed application right?. No problem. Here is the solution for that &quot;Service worker communication&quot; <a href="https://angular.io/guide/service-worker-communications" target="_blank">Learn more</a></p></li>
+</ul>
+<h3 id="bootstrap">Bootstrap</h3>
+<ul>
+<li>Add bootstrap in your project bash npm install bootstrap --save</li>
+</ul>
+<h1 id="add-this-line-in-style.css">add this line in style.css</h1>
+<p><span class="citation">@import</span> &quot;~bootstrap/dist/css/bootstrap.css&quot;;</p>
+<p></p>
+<h3 id="lazy-loading-modules">Lazy Loading Modules</h3>
+<ul>
+<li><p>First prepare your module structure based on your project requirement and page routing</p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#http://domain/</span>
+<span class="co">#</span>
+<span class="kw">ng</span> generate module homepage --route home --module app.module</code></pre></li>
+</ul>
+    </div>
+    <div class="col-xl-4 mt-5 p-0">
+        <app-rightmenu></app-rightmenu>
+    </div>
+</div>

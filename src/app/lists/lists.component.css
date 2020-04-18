@@ -1,0 +1,61 @@
+@media (min-width: 1025px) {
+    .movie_list .movie_img
+    {
+        height: 200px;
+        object-fit: cover;
+    }
+    .movie_list .card-columns {
+        column-count: 6;
+    }
+    .movie_list .card-body
+    {
+        background-image: linear-gradient(rgba(49, 36, 17, 0), rgba(49, 36, 17, 0.12) 5px, rgba(49, 36, 17, 0.52) 24px, rgba(29, 21, 10, 0.79) 40px, rgb(10, 8, 3) 56px, rgb(10, 7, 3) 100%);
+        padding: 30px 10px 7px 5px;
+        bottom: 0;
+        opacity: 0;
+        color: #ffffff;
+        position: absolute;
+        width: 100%;
+        -webkit-transition: opacity .25s ease-in,bottom .25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+        -o-transition: opacity .25s ease-in,bottom .25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+        transition: opacity .25s ease-in,bottom .25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+    }
+    .movie_list .card-title
+    {
+        color:#fff;
+        margin: 0px;
+    }
+    .movie_list .card-text .text-muted
+    {
+        color: #cacaca !important;
+    }
+    .movie_list .card
+    {
+        width: inherit;
+        background: #e2e2e2;
+        overflow: hidden;
+        position: relative;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 5px;
+        -webkit-transition: transform .25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+        -o-transition: transform .25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+        -webkit-transition: -webkit-transform .25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+        transition: -webkit-transform .25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+        -o-transition: -o-transform .25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+        transition: transform .25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+        transition: transform .25s cubic-bezier(0.33, 0.04, 0.63, 0.93), -webkit-transform .25s cubic-bezier(0.33, 0.04, 0.63, 0.93), -o-transform .25s cubic-bezier(0.33, 0.04, 0.63, 0.93);
+    }
+    .movie_list .card:hover .card-body
+    {
+        opacity: 1;
+    }
+    .movie_list .card:hover
+    {
+        -webkit-transform: scale3d(1.2, 1.2, 1) translate3d(0, 0, 0) perspective(400px);
+        transform: scale3d(1.2, 1.2, 1) translate3d(0, 0, 0) perspective(400px);
+        z-index: 4;
+    }
+}
