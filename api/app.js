@@ -2,6 +2,7 @@ const express = require('express'); // for api framework
 const bodyParser = require('body-parser'); // for accept the all form data i.e get, post, on, put
 const mongoose = require('mongoose'); // for access the models
 const fs = require('fs');
+const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const app = express();
 const env = process.env
@@ -9,6 +10,7 @@ const env = process.env
 mongoose.set('useCreateIndex', true); // mongoose default config settings
 mongoose.connect(env.MONGO_DB_URL, { useNewUrlParser: true }); // mention database name
 app.use(fileUpload());	
+app.use(cors());	
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use((req, res, next) => {

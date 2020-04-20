@@ -41,13 +41,10 @@ exports.update_list = async(req, res, next) => {
         var update_data={};
         update_data.name = requests.name;
         update_data.release_date = requests.release_date;
-        await ListsModel.findOneAndUpdate({ "_id": id }, { "$set": update_data}).exec(function(){
-            if(req.files)
-            {
-                this.upload_file(req,id);
-            }
-        });            
-        return res.apiResponse(true, "Updated Successfully");
+        await ListsModel.findOneAndUpdate({ "_id": id }, { "$set": update_data}).exec(async(err)=>{
+            await upload_file(req,id);
+            return res.apiResponse(true, "Updated Successfully");
+        });
     }
     else
     {
@@ -56,22 +53,23 @@ exports.update_list = async(req, res, next) => {
             release_date: requests.release_date
         }
         var list = new ListsModel(list_detail);
-        await list.save(function (err,res_list) {    
-            console.log()        
+        await list.save(async (err,res_list)=> {
             var id = res_list.id; 
-            this.upload_file(req,id);
+            await upload_file(req,id);
             return res.apiResponse(true, "Added Successfully");
         });
     }
 }
 upload_file = async(req,id)=>
 {
-    if(req.body.poster && typeof req.body.poster!="undefined")
+    if(req.body.poster && typeof req.body.poster!="undefined" && req.body.poster!=null)
     {
         // to declare some path to store your converted image
         var matches = req.body.poster.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
         response = {};
-        
+        if (matches==null) {
+            return false;
+        }
         if (matches.length !== 3) {
             return false;
         }
@@ -82,14 +80,15 @@ upload_file = async(req,id)=>
         let imageBuffer = decodedImg.data;
         let type = decodedImg.type;
         let extension = mime.getExtension(type);
-        let posterName = 'list' + id + '.' + extension;
+        var d = new Date();
+        let posterName = 'list' + d.getTime()+id + '.' + extension;
         const path = 'uploads/lists/';
         commonHelper.prepareUploadFolder(path)
         try {
             fs.writeFileSync(path + posterName, imageBuffer, 'utf8');
             var update_data={};
             update_data.poster = posterName;
-            ListsModel.findOneAndUpdate({ "_id": id }, { "$set": update_data}).exec();
+            await ListsModel.findOneAndUpdate({ "_id": id }, { "$set": update_data}).exec();
         } catch (e) {
             return false;
         }

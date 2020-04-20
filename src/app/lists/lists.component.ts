@@ -25,6 +25,7 @@ export class ListsComponent implements OnInit {
   delete_btn_loading:Boolean = false;
   pages:any
   search;
+  data_loading:Boolean = false;
   constructor(private common_service:CommonService, private router:Router, public rest:RestService) {
     this.common_service.search_on_change.subscribe(value => {
       this.search=value;
@@ -37,6 +38,7 @@ export class ListsComponent implements OnInit {
   }
   getLists(page)
   {
+    this.data_loading = true;
     let params={
       'page' : page,
       'per_page':12,
@@ -66,6 +68,7 @@ export class ListsComponent implements OnInit {
         }
       }
       this.pages = Array.from(Array((this.endPage + 1) - this.startPage).keys()).map(i => this.startPage + i);
+      this.data_loading = false;
     })
   }
   edit(item)

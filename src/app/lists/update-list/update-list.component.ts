@@ -45,13 +45,13 @@ export class UpdateListComponent implements OnInit {
   }
   deleteList()
   {
-    this.rest.post('delete_list',{id:this.urlPath[2]}).subscribe((response) => {
+    this.rest.post('delete_list',{id:this.urlPath[3]}).subscribe((response) => {
       this.router.navigateByUrl('lists');
     })    
   }
   getList()
   {
-    this.rest.post('get_lists',{id:this.urlPath[2],pagination:"false"}).subscribe((response) => {
+    this.rest.post('get_lists',{id:this.urlPath[3],pagination:"false"}).subscribe((response) => {
       this.formValues = response.data.lists[0];
     })
   }

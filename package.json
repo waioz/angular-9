@@ -8,7 +8,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev:ssr": "ng run waioz-angular-v9:serve-ssr",
-    "serve": "node dist/waioz-angular-v9/server/main.js",
+    "serve": "nodemon dist/waioz-angular-v9/server/main.js",
     "watch-serve": "nodemon dist/waioz-angular-v9/server/main.js",
     "build": "ng build --prod && ng run waioz-angular-v9:server:production",
     "watch": "ng build && ng run waioz-angular-v9:server",
@@ -18,6 +18,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.15.2",
     "express-fileupload": "^1.1.7-alpha.3",
