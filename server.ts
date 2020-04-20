@@ -45,18 +45,18 @@ export function app() {
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
 
-  const http = require('http');
-  // const https = require('https');
+  // const http = require('http');
+  const https = require('https');
   const httpHost = process.env.HTTP_HOST || 'localhost';
   const httpPort = process.env.HTTP_PORT || 5200;
 
-  const http_server = http.createServer(server);
+  // const http_server = http.createServer(server);
   const fs = require('fs');
   const options = {
     key: fs.readFileSync(process.env.HTTPS_KEY),
     cert: fs.readFileSync(process.env.HTTPS_CERT)
   };
-  // const http_server = https.createServer(options,server);
+  const http_server = https.createServer(options,server);
   http_server.listen(httpPort, httpHost, () => {
     console.log(`Node Express server listening on http://${httpHost}:${httpPort}`);
   });
