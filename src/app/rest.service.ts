@@ -18,7 +18,7 @@ export class RestService {
   };
   restUrl: String = '';
   constructor(private http: HttpClient) { 
-    this.restUrl =environment.apiUrl
+    this.restUrl =environment.baseUrl+"/api/"
   }
 
   getUrl (urlKey) {

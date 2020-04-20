@@ -27,7 +27,6 @@ export class ListsComponent implements OnInit {
   search;
   constructor(private common_service:CommonService, private router:Router, public rest:RestService) {
     this.common_service.search_on_change.subscribe(value => {
-      console.log(value);
       this.search=value;
       this.getLists(1);
 		})

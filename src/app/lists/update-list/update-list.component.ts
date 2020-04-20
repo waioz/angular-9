@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgxImageCompressService} from 'ngx-image-compress';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { RestService } from '../../rest.service';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router,ActivatedRoute,NavigationEnd } from '@angular/router';
 
 
 @Component({
@@ -24,30 +24,34 @@ export class UpdateListComponent implements OnInit {
   };
   urlPath
   constructor(private router:Router,private activatedRoute:ActivatedRoute,private imageCompress: NgxImageCompressService, private rest:RestService) {
-    this.urlPath = this.activatedRoute.snapshot.url.join().split(',');
-    if(this.urlPath[0]=="edit")
-    {
-      var list_data = this.router.getCurrentNavigation().extras.state;
-      if(typeof list_data=="undefined")
-      {
-        this.getList();
-      }
-      else
-      {
-        this.formValues = list_data
-      }
-      this._action="Edit";
-    }
+    this.router.events.subscribe((event) => {
+		  if (event instanceof NavigationEnd ) {
+        this.urlPath = event.url.split('/');
+        if(this.urlPath[2]=="edit")
+        {
+          var list_data = this.router.getCurrentNavigation().extras.state;
+          if(typeof list_data=="undefined")
+          {
+            this.getList();
+          }
+          else
+          {
+            this.formValues = list_data
+          }
+          this._action="Edit";
+        }
+		  }
+		});
   }
   deleteList()
   {
-    this.rest.post('delete_list',{id:this.urlPath[1]}).subscribe((response) => {
+    this.rest.post('delete_list',{id:this.urlPath[2]}).subscribe((response) => {
       this.router.navigateByUrl('lists');
     })    
   }
   getList()
   {
-    this.rest.post('get_lists',{id:this.urlPath[1],pagination:"false"}).subscribe((response) => {
+    this.rest.post('get_lists',{id:this.urlPath[2],pagination:"false"}).subscribe((response) => {
       this.formValues = response.data.lists[0];
     })
   }

@@ -1,0 +1,8 @@
+<div class="col-12">
+    <div class="col-12 my-4">
+        <fa-icon routerLink="/lists" class="pointer mr-3 float-left no-outline" [icon]="faArrowLeft"></fa-icon><h5>Google Maps</h5>
+    </div>
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+</div>

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RightmenuComponent } from '../rightmenu/rightmenu.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -13,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   declarations: [ RightmenuComponent ],
   exports:[
-    RightmenuComponent
+    RightmenuComponent,
+    FontAwesomeModule
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,230 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>waioz-angular-v9 documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">waioz-angular-v9 documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<p align="center">
+  <h1 align="center">Angular Version 9 - Waioz</h1>
+  <p align="center">
+    Angular 9.1.1 + Material
+    <br>
+    Browser Support(Polyfill) + PWA(with Service Workers) + SSR + Lazy Loading + google Analytics + Leaflet Maps
+    <br>
+    Node JS + Express + MongoDB
+    <br>
+    <a href="https://angular.ganatan.com/" target="_blank">Demo Page</a>
+    <br>
+  </p>
+</p>
+
+<h2 id="lighthouse-audit">Lighthouse Audit</h2>
+<img src="https://api.ganatan.org/articles/img/search-engine-optimization-avec-angular-lighthouse-after.png"/>
+
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#front-end">Front end</a></li>
+<li><a href="#back-end">Back end</a></li>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#step-by-step-quide">Step By Step Quide</a></li>
+</ul>
+<h2 id="front-end">Front end</h2>
+<div><pre class="line-numbers"><code class="language-bash"># clone the repo
+git clone https://github.com/ganatan/angular9-app.git
+
+# change directory
+cd angular9-app
+
+# install the repo with npm
+npm install
+
+# start the server
+npm start
+</code></pre></div><p>in your browser go to <a href="http://localhost:4200">http://localhost:4200</a> </p>
+<h3 id="tests">Tests</h3>
+<ul>
+<li><code>npm run lint</code></li>
+<li><code>npm run test</code></li>
+<li><code>npm run e2e</code></li>
+</ul>
+<h3 id="compilation">Compilation</h3>
+<ul>
+<li><code>npm run build</code>       ( without SSR)</li>
+<li><code>npm run build:ssr</code>   ( with SSR)</li>
+</ul>
+<h3 id="production">Production</h3>
+<ul>
+<li><code>npm run serve:ssr</code></li>
+<li>in your browser <a href="http://localhost:4000">http://localhost:4000</a> </li>
+</ul>
+<h2 id="back-end">Back end</h2>
+<h3 id="path">Path</h3>
+<ul>
+<li><code>/api</code></li>
+</ul>
+<h3 id="database-creation">Database Creation</h3>
+<ul>
+<li><code>change login and password for mongodb in file app.js</code></li>
+<li><code>dbname&quot;:&quot;waioz-sample&quot;</code></li>
+</ul>
+<h3 id="developpement">Developpement</h3>
+<ul>
+<li><code>npm run start</code></li>
+<li>in your browser <a href="http://localhost:5200">http://localhost:5200</a> </li>
+</ul>
+<h3 id="tests-api">Tests API</h3>
+<ul>
+<li>in your postman tool <a href="http://localhost:5200/movies">http://localhost:5200/movies</a> </li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<h3 id="author">Author</h3>
+<ul>
+<li>Updated : 16/04/2020</li>
+<li>Author  : A.K.Praveen Kumar</li>
+</ul>
+<h2 id="step-by-step-quide">Step By Step Quide</h2>
+<h3 id="install-the-angular-cli">Install the Angular CLI</h3>
+<ul>
+<li>To install the CLI using npm, open a terminal/console window and enter the following command:</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-bash"># Install the Angular CLI globally
+npm install -g &#64;angular/cli
+
+# provide your project name instead waioz-angular-v9, as shown here
+ng new waioz-angular-v9</code></pre></div><ul>
+<li>Set routing option yes.</li>
+<li>choose your styling platform extension</li>
+</ul>
+<h3 id="browser-support">Browser Support</h3>
+<ul>
+<li><p>install web-animation-js for browser support. Old browsers does not support some features of Angular.
+<a href="https://angular.io/guide/browser-support" target="_blank">Learn more</a></p>
+<div><pre class="line-numbers"><code class="language-bash"># install the optional web animations polyfill
+npm install --save web-animations-js</code></pre></div></li>
+<li><p>You can then add the import statement in the src/polyfills.ts<br></p>
+</li>
+</ul>
+<h3 id="server-side-rendering-ssr---angular-universal">Server Side Rendering (SSR) - Angular Universal</h3>
+<ul>
+<li>To create the server-side app module, app.server.module.ts, run the following CLI command.
+<a href="https://angular.io/guide/universal" target="_blank"> Learn more</a><div><pre class="line-numbers"><code class="language-bash">ng add &#64;nguniversal/express-engine</code></pre></div><div><pre class="line-numbers"><code class="language-bash">npm run build:ssr &amp;&amp; npm run serve:ssr</code></pre></div></li>
+<li>Open a browser and navigate to <a href="http://localhost:4000/">http://localhost:4000/</a>.<br></li>
+</ul>
+<h3 id="adding-a-service-worker-to-your-project---pwa">Adding a service worker to your project - PWA</h3>
+<ul>
+<li>To set up the Angular service worker in your project, use the CLI command ng add @angular/pwa. It takes care of configuring your app to use service workers by adding the service-worker package along with setting up the necessary support files. 
+<a href="https://angular.io/guide/service-worker-getting-started" target="blank" >Learn more</a><div><pre class="line-numbers"><code class="language-bash">#ng add &#64;angular/pwa --project *project-name*
+ng add &#64;angular/pwa --project waioz-angular-v9</code></pre></div><div><pre class="line-numbers"><code class="language-bash">npm run build:ssr &amp;&amp; npm run serve:ssr</code></pre></div></li>
+<li>Open a browser and navigate to <a href="http://localhost:4000/">http://localhost:4000/</a>.<br></li>
+<li>So PWA creates the application in mobile phones. First time you opens your site in browser it will asks you to save as PWA. If you click yes<br>
+it installed in your mobile and it reacts like normal applicaton. This is pretty much and yeah its good but if you release any updates in your website it will not reflect in already installed application right?. No problem. Here is the solution for that &quot;Service worker communication&quot;
+<a href="https://angular.io/guide/service-worker-communications" target="_blank">Learn more</a></li>
+</ul>
+<h3 id="bootstrap">Bootstrap</h3>
+<ul>
+<li>Add bootstrap in your project<div><pre class="line-numbers"><code class="language-bash">npm install bootstrap --save
+</code></pre></div></li>
+</ul>
+<p>#add this line in style.css
+@import &quot;~bootstrap/dist/css/bootstrap.css&quot;;</p>
+<div><pre class="line-numbers"><code class="language-none">
+### Lazy Loading Modules
+* First prepare your module structure based on your project requirement and page routing
+```bash
+#http://domain/{route}
+#                  {modulename}     {route path}  {parent module}
+ng generate module homepage --route home --module app.module</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

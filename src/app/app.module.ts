@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarModule } from 'ng-sidebar';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -27,7 +28,8 @@ import { HeaderComponent } from './header/header.component';
     BrowserAnimationsModule,
     FontAwesomeModule,
     SidebarModule.forRoot(),
-    SharedModule
+    SharedModule,
+    GooglePlaceModule
   ],
   providers: [],
   bootstrap: [AppComponent]

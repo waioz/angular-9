@@ -1,5 +1,7 @@
 import { HostListener, Component } from '@angular/core';
 import { faTimes,faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { CommonService } from './common.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,7 +18,11 @@ export class AppComponent {
   _class="sidebar-container col-xs-12 p-0 white border-right";
   public innerWidth: any;
 
-  constructor() {}
+  constructor(private common_service:CommonService) {
+    this.common_service.toggle_sidebar.subscribe(value => {
+      this._toggleSidebar();
+    })
+  }
   set_mobile_config()
   {
     this.isMobile = true;

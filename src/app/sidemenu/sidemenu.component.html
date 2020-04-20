@@ -8,12 +8,13 @@
             </div>
         </div>
     </li>
-    <li class="list-group-item pointer no-border no-outline" routerLink="">Home</li>
-    <li class="list-group-item pointer no-border no-outline" routerLink="lists">CRUD Functions</li>
-    <li class="list-group-item pointer no-border no-outline" routerLink="document">Documentation</li>
-    <li class="list-group-item pointer no-border no-outline" routerLink="about">About</li>
-    <li class="list-group-item pointer no-border no-outline" routerLink="contact">Contact</li>
-    <li class="list-group-item pointer no-border no-outline mt-5" routerLink="contact"><fa-icon class="mr-2 align-middle" [icon]="faGithub"></fa-icon>Get on Github</li>
-    <li class="list-group-item pointer no-border no-outline" routerLink="contact"><fa-icon class="mr-2 align-middle" [icon]="faSlack"></fa-icon>Discuss on Slack</li>
+    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()" routerLink="">Home</li>
+    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()" routerLink="lists">CRUD Functions</li>
+    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()" routerLink="maps">Maps</li>
+    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()" routerLink="about">About</li>
+    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()"><a class="normal_a" href="{{ base_url }}:9010" target="_blank"><fa-icon class="mr-2 align-middle" [icon]="faLink"></fa-icon>Documentation</a></li>
+    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()"><a class="normal_a" href="https://waioz.com/contacs" target="_blank"><fa-icon class="mr-2 align-middle" [icon]="faLink"></fa-icon>Contact</a></li>
+    <li class="list-group-item pointer no-border no-outline mt-5" (click)="toggleSidebar()"><a class="normal_a" href="https://github.com/waioz/angular-9" target="_blank"><fa-icon class="mr-2 align-middle" [icon]="faGithub"></fa-icon>Get on Github</a></li>
+    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()"><a class="normal_a" href="https://waioz.slack.com/archives/D63GDMNC9" target="_blank"><fa-icon class="mr-2 align-middle" [icon]="faSlack"></fa-icon>Discuss on Slack</a></li>
 </ul>
 

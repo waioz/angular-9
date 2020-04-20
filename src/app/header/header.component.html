@@ -5,19 +5,26 @@
             <p class="m-0 py-3 w-100">WAIOZ <span class="slogan">Angular v9</span></p>
         </div>
     </div>
-    <div class="col-8 col-md-9 py-3">
+    <div class="col-8 col-md-8 py-3">
         <div class="input-group d-flex align-items-center">
-            <input type="text" class="form-control" (keyup)="set_search($event)" placeholder="Search by movie name" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input type="text" *ngIf="urlPath[1]=='lists'" class="form-control" (keyup)="set_search($event)" placeholder="Search by movie name" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input type="text" *ngIf="urlPath[1]!='lists'" class="form-control" ngx-google-places-autocomplete (onAddressChange)="handleAddressChange($event)" 
+            placeholder="Enter your location" aria-label="Default" aria-describedby="inputGroup-sizing-default">
             <div class="input-group-append">
                 <span class="input-group-text white" id="inputGroup-sizing-default">
-                    <fa-icon class="mr-1" *ngIf="page==''" [icon]="faMapMarkerAlt"></fa-icon>
-                    <fa-icon class="mr-1" *ngIf="page=='lists'" [icon]="faSearch"></fa-icon>
+                    <fa-icon class="mr-1" *ngIf="urlPath[1]!='lists'" [icon]="faMapMarkerAlt"></fa-icon>
+                    <fa-icon class="mr-1" *ngIf="urlPath[1]=='lists'" [icon]="faSearch"></fa-icon>
                 </span>
               </div>
         </div>
     </div>
-    <div class="col-4 col-md-3 d-flex pl-0 align-items-center">
-        <p class="m-0" *ngIf="page==''">Try your business idea in MEAN Stack? <a href="https://waioz.com">Contact Us</a></p>
-        <button type="button" routerLink="lists/add"  class="btn btn-dark ml-auto">Add Movie</button>
+    <div class="col-4 col-md-4 d-flex align-items-center p-0">
+        <ul class="list-group">
+            <li class="list-group-item no-border">
+                <p class="m-0 d-none d-lg-block" *ngIf="urlPath[1]!='lists'"><span class="">Try your business idea in MEAN Stack? </span> <a href="https://waioz.com">Contact Us</a></p>
+                <button *ngIf="urlPath[1]=='lists'" type="button" routerLink="lists/add"  class="btn btn-dark ml-auto">Add Movie</button>
+                <button *ngIf="urlPath[1]!='lists'" type="button" routerLink="https://waioz.com"  class="d-lg-none btn btn-dark ml-auto">Contact</button>
+            </li>
+        </ul>
     </div>
 </div>

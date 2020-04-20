@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faGithub, faSlack } from '@fortawesome/free-brands-svg-icons';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { CommonService } from '../common.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-sidemenu',
@@ -9,9 +12,16 @@ import { faGithub, faSlack } from '@fortawesome/free-brands-svg-icons';
 export class SidemenuComponent implements OnInit {
   faGithub = faGithub;
   faSlack = faSlack;
-  constructor() { }
+  faLink=faLink;
+  base_url = "";
+  constructor(private common_service:CommonService) {
+    this.base_url = environment.baseUrl;
+  }
 
   ngOnInit(): void {
   }
-
+  toggleSidebar()
+  {
+    this.common_service.set_sidebar_toggle();
+  }
 }
