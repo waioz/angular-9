@@ -646,7 +646,7 @@ export class RestService {
   };
   restUrl: String &#x3D; &#x27;&#x27;;
   constructor(private http: HttpClient) { 
-    this.restUrl &#x3D;environment.baseUrl+&quot;/api/&quot;
+    this.restUrl &#x3D;environment.apiUrl
   }
 
   getUrl (urlKey) {

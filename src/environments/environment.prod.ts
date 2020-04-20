@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://tryout.waioz.com:9009',
+  apiUrl: 'https://tryout.waioz.com:9009/api/',
+  domain: 'tryout.waioz.com'
 };

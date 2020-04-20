@@ -130,7 +130,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#base_url">base_url</a>
+                                <a href="#domain">domain</a>
                             </li>
                             <li>
                                 <a href="#faGithub">faGithub</a>
@@ -317,11 +317,11 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="base_url"></a>
+                        <a name="domain"></a>
                         <span class="name">
                             <b>
-                            base_url</b>
-                            <a href="#base_url"><span class="icon ion-ios-link"></span></a>
+                            domain</b>
+                            <a href="#domain"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
@@ -444,9 +444,9 @@ export class SidemenuComponent implements OnInit {
   faGithub &#x3D; faGithub;
   faSlack &#x3D; faSlack;
   faLink&#x3D;faLink;
-  base_url &#x3D; &quot;&quot;;
+  domain &#x3D; &quot;&quot;;
   constructor(private common_service:CommonService) {
-    this.base_url &#x3D; environment.baseUrl;
+    this.domain &#x3D; environment.domain;
   }
 
   ngOnInit(): void {
@@ -474,7 +474,7 @@ export class SidemenuComponent implements OnInit {
     &lt;li class&#x3D;&quot;list-group-item pointer no-border no-outline&quot; (click)&#x3D;&quot;toggleSidebar()&quot; routerLink&#x3D;&quot;lists&quot;&gt;CRUD Functions&lt;/li&gt;
     &lt;li class&#x3D;&quot;list-group-item pointer no-border no-outline&quot; (click)&#x3D;&quot;toggleSidebar()&quot; routerLink&#x3D;&quot;maps&quot;&gt;Maps&lt;/li&gt;
     &lt;li class&#x3D;&quot;list-group-item pointer no-border no-outline&quot; (click)&#x3D;&quot;toggleSidebar()&quot; routerLink&#x3D;&quot;about&quot;&gt;About&lt;/li&gt;
-    &lt;li class&#x3D;&quot;list-group-item pointer no-border no-outline&quot; (click)&#x3D;&quot;toggleSidebar()&quot;&gt;&lt;a class&#x3D;&quot;normal_a&quot; href&#x3D;&quot;{{ base_url }}:9010&quot; target&#x3D;&quot;_blank&quot;&gt;&lt;fa-icon class&#x3D;&quot;mr-2 align-middle&quot; [icon]&#x3D;&quot;faLink&quot;&gt;&lt;/fa-icon&gt;Documentation&lt;/a&gt;&lt;/li&gt;
+    &lt;li class&#x3D;&quot;list-group-item pointer no-border no-outline&quot; (click)&#x3D;&quot;toggleSidebar()&quot;&gt;&lt;a class&#x3D;&quot;normal_a&quot; href&#x3D;&quot;http://{{ domain }}:9010&quot; target&#x3D;&quot;_blank&quot;&gt;&lt;fa-icon class&#x3D;&quot;mr-2 align-middle&quot; [icon]&#x3D;&quot;faLink&quot;&gt;&lt;/fa-icon&gt;Documentation&lt;/a&gt;&lt;/li&gt;
     &lt;li class&#x3D;&quot;list-group-item pointer no-border no-outline&quot; (click)&#x3D;&quot;toggleSidebar()&quot;&gt;&lt;a class&#x3D;&quot;normal_a&quot; href&#x3D;&quot;https://waioz.com/contacs&quot; target&#x3D;&quot;_blank&quot;&gt;&lt;fa-icon class&#x3D;&quot;mr-2 align-middle&quot; [icon]&#x3D;&quot;faLink&quot;&gt;&lt;/fa-icon&gt;Contact&lt;/a&gt;&lt;/li&gt;
     &lt;li class&#x3D;&quot;list-group-item pointer no-border no-outline mt-5&quot; (click)&#x3D;&quot;toggleSidebar()&quot;&gt;&lt;a class&#x3D;&quot;normal_a&quot; href&#x3D;&quot;https://github.com/waioz/angular-9&quot; target&#x3D;&quot;_blank&quot;&gt;&lt;fa-icon class&#x3D;&quot;mr-2 align-middle&quot; [icon]&#x3D;&quot;faGithub&quot;&gt;&lt;/fa-icon&gt;Get on Github&lt;/a&gt;&lt;/li&gt;
     &lt;li class&#x3D;&quot;list-group-item pointer no-border no-outline&quot; (click)&#x3D;&quot;toggleSidebar()&quot;&gt;&lt;a class&#x3D;&quot;normal_a&quot; href&#x3D;&quot;https://waioz.slack.com/archives/D63GDMNC9&quot; target&#x3D;&quot;_blank&quot;&gt;&lt;fa-icon class&#x3D;&quot;mr-2 align-middle&quot; [icon]&#x3D;&quot;faSlack&quot;&gt;&lt;/fa-icon&gt;Discuss on Slack&lt;/a&gt;&lt;/li&gt;
@@ -515,7 +515,7 @@ export class SidemenuComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ul class="list-group sticky-top">    <li class="list-group-item pointer no-border no-outline">        <div class="my-3 ">            <img class="h-50x float-left" src="../assets/logo.png">            <div class="">            <p class="m-0 pb-1">WAIOZ</p>            <p class="m-0"><span class="slogan">Angular v9</span></p>            </div>        </div>    </li>    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()" routerLink="">Home</li>    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()" routerLink="lists">CRUD Functions</li>    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()" routerLink="maps">Maps</li>    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()" routerLink="about">About</li>    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()"><a class="normal_a" href="{{ base_url }}:9010" target="_blank"><fa-icon class="mr-2 align-middle" [icon]="faLink"></fa-icon>Documentation</a></li>    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()"><a class="normal_a" href="https://waioz.com/contacs" target="_blank"><fa-icon class="mr-2 align-middle" [icon]="faLink"></fa-icon>Contact</a></li>    <li class="list-group-item pointer no-border no-outline mt-5" (click)="toggleSidebar()"><a class="normal_a" href="https://github.com/waioz/angular-9" target="_blank"><fa-icon class="mr-2 align-middle" [icon]="faGithub"></fa-icon>Get on Github</a></li>    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()"><a class="normal_a" href="https://waioz.slack.com/archives/D63GDMNC9" target="_blank"><fa-icon class="mr-2 align-middle" [icon]="faSlack"></fa-icon>Discuss on Slack</a></li></ul></div>'
+        var COMPONENT_TEMPLATE = '<div><ul class="list-group sticky-top">    <li class="list-group-item pointer no-border no-outline">        <div class="my-3 ">            <img class="h-50x float-left" src="../assets/logo.png">            <div class="">            <p class="m-0 pb-1">WAIOZ</p>            <p class="m-0"><span class="slogan">Angular v9</span></p>            </div>        </div>    </li>    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()" routerLink="">Home</li>    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()" routerLink="lists">CRUD Functions</li>    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()" routerLink="maps">Maps</li>    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()" routerLink="about">About</li>    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()"><a class="normal_a" href="http://{{ domain }}:9010" target="_blank"><fa-icon class="mr-2 align-middle" [icon]="faLink"></fa-icon>Documentation</a></li>    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()"><a class="normal_a" href="https://waioz.com/contacs" target="_blank"><fa-icon class="mr-2 align-middle" [icon]="faLink"></fa-icon>Contact</a></li>    <li class="list-group-item pointer no-border no-outline mt-5" (click)="toggleSidebar()"><a class="normal_a" href="https://github.com/waioz/angular-9" target="_blank"><fa-icon class="mr-2 align-middle" [icon]="faGithub"></fa-icon>Get on Github</a></li>    <li class="list-group-item pointer no-border no-outline" (click)="toggleSidebar()"><a class="normal_a" href="https://waioz.slack.com/archives/D63GDMNC9" target="_blank"><fa-icon class="mr-2 align-middle" [icon]="faSlack"></fa-icon>Discuss on Slack</a></li></ul></div>'
     var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomepageComponent', 'selector': 'app-homepage'},{'name': 'ListsComponent', 'selector': 'app-lists'},{'name': 'MapsComponent', 'selector': 'app-maps'},{'name': 'RightmenuComponent', 'selector': 'app-rightmenu'},{'name': 'SidemenuComponent', 'selector': 'app-sidemenu'},{'name': 'UpdateListComponent', 'selector': 'app-update-list'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SidemenuComponent'};

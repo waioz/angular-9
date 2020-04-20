@@ -13,9 +13,9 @@ export class SidemenuComponent implements OnInit {
   faGithub = faGithub;
   faSlack = faSlack;
   faLink=faLink;
-  base_url = "";
+  domain = "";
   constructor(private common_service:CommonService) {
-    this.base_url = environment.baseUrl;
+    this.domain = environment.domain;
   }
 
   ngOnInit(): void {
