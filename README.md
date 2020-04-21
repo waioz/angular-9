@@ -1,19 +1,16 @@
 <p align="center">
   <h1 align="center">Angular Version 9 - Waioz</h1>
   <p align="center">
-    Angular 9.1.1 + Material
+    Angular 9 + Bootstrap
     <br>
-    Browser Support(Polyfill) + PWA(with Service Workers) + SSR + Lazy Loading + google Analytics + Leaflet Maps
+    Browser Support(Polyfill) + PWA(with Service Workers) + SSR + Lazy Loading + Google Maps
     <br>
     Node JS + Express + MongoDB
     <br>
-    <a href="https://angular.ganatan.com/" target="_blank">Demo Page</a>
+    <a href="https://tryout.waioz.com:9009/" target="_blank">Demo Page</a>
     <br>
   </p>
 </p>
-
-## Lighthouse Audit
-<img src="https://api.ganatan.org/articles/img/search-engine-optimization-avec-angular-lighthouse-after.png"/>
 
 ## Table of contents
 
@@ -26,7 +23,7 @@
 
 ```bash
 # clone the repo
-git clone https://github.com/ganatan/angular9-app.git
+git clone https://github.com/waioz/angular-9
 
 # change directory
 cd angular9-app
@@ -65,8 +62,6 @@ in your browser go to [http://localhost:4200](http://localhost:4200)
 * `npm run start`
 * in your browser [http://localhost:5200](http://localhost:5200) 
 
-### Tests API
-* in your postman tool [http://localhost:5200/movies](http://localhost:5200/movies) 
 
 ## Documentation
 
