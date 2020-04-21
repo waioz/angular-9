@@ -11,7 +11,7 @@ const routes: Routes = [ ];
   imports: [
     AppModule,
     ServerModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes,{scrollPositionRestoration: 'top'}),
   ],
   bootstrap: [AppComponent],
   declarations: [],

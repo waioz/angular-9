@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((event) => {
 		  if (event instanceof NavigationEnd ) {
         this.urlPath = event.url.split('/');
-        console.log(this.urlPath)
 		  }
 		});
   }

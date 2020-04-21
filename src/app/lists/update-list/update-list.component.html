@@ -8,7 +8,10 @@
         </div>
         <input type="text" class="form-control" [(ngModel)]="formValues['name']" placeholder="Name of the movie" aria-label="Movie name" aria-describedby="movie_name_text">
         <div class="d-none d-lg-block input-group-append">
-            <button class="btn btn-dark" (click)="compressFile()">Upload Movie Poster</button>
+            <button (click)="compressFile()" class="btn btn-dark" [disabled]="update_movie_poster['disabled']">
+                <div *ngIf="update_movie_poster['loading']" class="loader transition-all"></div>
+                <span class="transition-all" *ngIf="!update_movie_poster['loading']">Upload Movie Poster</span>
+            </button>
         </div>
     </div>
     <div class="d-block d-lg-none col-12 mb-3 pb-1">

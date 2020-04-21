@@ -18,6 +18,10 @@ export class UpdateListComponent implements OnInit {
     disabled:false,
     loading:false
   };
+  update_movie_poster: Object = {
+    disabled:false,
+    loading:false
+  };
   delete_movie: Object = {
     disabled:false,
     loading:false
@@ -73,11 +77,17 @@ export class UpdateListComponent implements OnInit {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
   compressFile() {
+    this.update_movie['disabled']=true;
+    this.update_movie_poster['loading']=true;
+    this.update_movie_poster['disabled']=true;
     this.imageCompress.uploadFile().then(({image, orientation}) => {
       this.imgResultBeforeCompress = image;
       this.imgSizeBeforeCompress = this.formatBytes(this.imageCompress.byteCount(image))      
       this.imageCompress.compressFile(image, orientation, 50, 90).then(
         result => {
+          this.update_movie['disabled']=false;
+          this.update_movie_poster['loading']=false;
+          this.update_movie_poster['disabled']=false;
           this.imgResultAfterCompress = result;
           this.imgSizeAfterCompress = this.formatBytes(this.imageCompress.byteCount(result))
         }

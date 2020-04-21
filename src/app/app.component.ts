@@ -48,7 +48,7 @@ export class AppComponent {
   }
   @HostListener('window:orientationchange', ['$event'])
   onOrientationChange(event) {
-    this.set_config();
+    location.reload();
   }
 
   @HostListener('window:resize', ['$event'])

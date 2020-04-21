@@ -1,5 +1,5 @@
 <div class="row p-0 m-0 sticky-top white">
-    <div class="d-block d-sm-none w-100">
+    <div class="d-block d-md-none w-100">
         <div class="col-12 text-center align-items-center d-flex">
             <button (click)="toggleSidebar()" class="float-left white no-border pointer no-outline p-0"><fa-icon class="mr-1" [icon]="faBars"></fa-icon></button>
             <p class="m-0 py-3 w-100">WAIOZ <span class="slogan">Angular v9</span></p>
@@ -22,7 +22,7 @@
         <ul class="list-group">
             <li class="list-group-item no-border">
                 <p class="m-0 d-none d-lg-block" *ngIf="urlPath[1]!='lists'"><span class="">Try your business idea in MEAN Stack? </span> <a href="https://waioz.com">Contact Us</a></p>
-                <button *ngIf="urlPath[1]=='lists'" type="button" routerLink="lists/add"  class="btn btn-dark ml-auto">Add Movie</button>
+                <button *ngIf="urlPath[1]=='lists'" type="button" routerLink="lists/add"  class="btn btn-dark ml-auto">Add <span class="d-none d-md-block">Movie</span></button>
                 <button *ngIf="urlPath[1]!='lists'" type="button" routerLink="https://waioz.com"  class="d-lg-none btn btn-dark ml-auto">Contact</button>
             </li>
         </ul>
