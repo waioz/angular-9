@@ -7,23 +7,12 @@ import { join } from 'path';
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
-const domino = require('domino');
-const dotenv = require('dotenv');
-dotenv.config();
+
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
-  // Start up the Node server
-  if (!process.env.HTTP_HOST) {
-    console.log('Please configure env file.')
-    console.log('Copy .env.default to .env and configure the values.')
-    return
-  }
-  const server = require('./api/app');
+  const server = express();
   const distFolder = join(process.cwd(), 'dist/waioz-angular-v9/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
-  const win = domino.createWindow(indexHtml);
-  global['window'] = win;
-  global['document'] = win.document;
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
@@ -33,8 +22,11 @@ export function app() {
   server.set('view engine', 'html');
   server.set('views', distFolder);
 
-  // Example Express Rest API endpoints
-  // server.get('/api/**', (req, res) => { });
+  // TODO: implement data requests securely
+  server.get('/api/**', (req, res) => {
+    res.status(404).send('data requests are not yet supported');
+  });
+
   // Serve static files from /browser
   server.get('*.*', express.static(distFolder, {
     maxAge: '1y'
@@ -45,23 +37,18 @@ export function app() {
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
 
-  // const http = require('http');
-  const https = require('https');
-  const httpHost = process.env.HTTP_HOST || 'localhost';
-  const httpPort = process.env.HTTP_PORT || 5200;
-
-  // const http_server = http.createServer(server);
-  const fs = require('fs');
-  const options = {
-    key: fs.readFileSync(process.env.HTTPS_KEY),
-    cert: fs.readFileSync(process.env.HTTPS_CERT)
-  };
-  const http_server = https.createServer(options,server);
-  http_server.listen(httpPort, httpHost, () => {
-    console.log(`Node Express server listening on http://${httpHost}:${httpPort}`);
-  });
+  return server;
 }
 
+function run() {
+  const port = process.env.PORT || 4000;
+
+  // Start up the Node server
+  const server = app();
+  server.listen(port, () => {
+    console.log(`Node Express server listening on http://localhost:${port}`);
+  });
+}
 
 // Webpack will replace 'require' with '__webpack_require__'
 // '__non_webpack_require__' is a proxy to Node 'require'
@@ -70,7 +57,7 @@ declare const __non_webpack_require__: NodeRequire;
 const mainModule = __non_webpack_require__.main;
 const moduleFilename = mainModule && mainModule.filename || '';
 if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
-  app();
+  run();
 }
 
 export * from './src/main.server';

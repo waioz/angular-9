@@ -8,11 +8,32 @@ if (!process.env.HTTP_HOST) {
   return
 }
 
-const http = require('http');
+const fs = require('fs');
+if(process.env.HTTPS=="true")
+{
+  var http = require('https');
+  var options = {
+    key: fs.readFileSync(process.env.HTTPS_KEY),
+    cert: fs.readFileSync(process.env.HTTPS_CERT)
+  };
+  
+}
+else
+{
+  var http = require('http');
+  var options = {};
+}
+  
 const app = require('./api/app');
-const httpHost = process.env.HTTP_HOST || 'localhost';
-const httpPort = process.env.HTTP_PORT || 8000;
+// const socketController = require('./node_app/app/controllers/socket_controller')
 
-const server = http.createServer(app);
+
+const httpHost = process.env.HTTP_HOST || 'localhost';
+const httpPort = process.env.API_PORT || 8000;
+
+const server = http.createServer(options,app);
+// const io = require('socket.io')(server);
+// global.io = io; //added
+// io.sockets.on('connection', socketController.respond );
 server.listen(httpPort, httpHost);
-console.log('Server listening on '+ httpHost + ':' + httpPort)
+console.log('API listening on '+ httpHost + ':' + httpPort)
